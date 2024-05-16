@@ -2,27 +2,27 @@ name = inception
 dcf = ./srcs/docker-compose.yml
 
 all:
-	@printf "Ejecutando la configuración ${name}...\\n"
+	@printf "Running setup ${name}...\\n"
 	@docker-compose -f $(dcf) up -d
 
 build:
-	@printf "Construyendo la configuración ${name}...\\n"
+	@printf "Building setup ${name}...\\n"
 	@docker-compose -f $(dcf) up -d --build
 
 down:
-	@printf "Deteniendo la configuración ${name}...\\n"
+	@printf "Stopping setup ${name}...\\n"
 	@docker-compose -f $(dcf) down
 
 re:	down
-	@printf "Reconstruyendo la configuración ${name}...\\n"
+	@printf "Rebuilding setup ${name}...\\n"
 	@docker-compose -f $(dcf) up -d --build
 
 clean: down
-	@printf "Limpiando la configuración ${name}...\\n"
+	@printf "Cleaning setup ${name}...\\n"
 	@docker system prune -a
 
 fclean: down
-	@printf "Limpieza total de todas las configuraciones de Docker\\n"
+	@printf "Complete cleanup of all Docker setup\\n"
 	@docker rmi debian:bullseye
 	@docker rmi srcs_nginx
 	@docker rmi srcs_wordpress

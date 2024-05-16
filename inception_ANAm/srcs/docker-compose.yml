@@ -9,7 +9,7 @@ services:
       context: requirements/mariadb
       dockerfile: Dockerfile
     networks:
-      - vodafone
+      - anafonica
     volumes:
       - MDB_volume:/var/lib/mysql
     restart: always
@@ -23,7 +23,7 @@ services:
       context: requirements/nginx
       dockerfile: Dockerfile
     networks:
-      - vodafone
+      - anafonica
     volumes:
       - WPS_volume:/var/www/wordpress
     depends_on:
@@ -40,7 +40,7 @@ services:
       context: requirements/wordpress
       dockerfile: Dockerfile
     networks:
-      - vodafone
+      - anafonica
     volumes:
       - WPS_volume:/var/www/wordpress
     depends_on:
@@ -64,5 +64,5 @@ volumes:
       device: '/home/anamarqu/data/mariadb'
 
 networks:
-  vodafone:
+  anafonica:
     driver: bridge
